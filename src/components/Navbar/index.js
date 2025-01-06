@@ -13,7 +13,7 @@ const Navbar = () => {
     <Nav>
       <NavbarContainer>
         <NavLogo to='/'>
-          <a style={{ display: "flex", alignItems: "center", color: "white", marginBottom: '20;', cursor: 'pointer' }}>           
+          <a style={{ display: "flex", alignItems: "center", color: "white", marginBottom: '20;', cursor: 'pointer' }}  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>                  
           <FaNeos size="2rem" />          
             </a>  
         </NavLogo>
