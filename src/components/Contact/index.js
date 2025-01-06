@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -122,53 +122,78 @@ const ContactButton = styled.input`
 `
 
 
-
 const Contact = () => {
-
-  //hooks
-  const [open, setOpen] = React.useState(false);
+  // hooks
+  const [errors, setErrors] = useState({});
   const form = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs.sendForm('service_mvac36k', 'template_4scac1p', form.current, 'CLHAR9B_rdXL8hPW8')
-      .then((result) => {
-        // Display toast notification on success
-        toast.success(' Email sent successfully!', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
+
+    const formData = new FormData(form.current);
+    const email = formData.get('from_email');
+    const message = formData.get('message');
+
+    const newErrors = {};
+
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = 'Email is mandatory and must be valid.';
+    }
+    if (!message || message.trim() === '') {
+      newErrors.message = 'Message is mandatory.';
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+    emailjs
+      .sendForm('service_mvac36k', 'template_4scac1p', form.current, 'CLHAR9B_rdXL8hPW8')
+      .then(
+        (result) => {
+          // Display toast notification on success
+          toast.success('Email sent successfully!', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'colored',
           });
-        setOpen(true);
-        form.current.reset();
-      }, (error) => {
-        console.log(error.text);
-      });
-  }
-
-
+          form.current.reset();
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
 
   return (
-    <Container id='contact'>
+    <Container id="contact">
       <Wrapper>
         <Title>Contact</Title>
         <Desc>Feel free to reach out to me for any questions or opportunities!</Desc>
         <ContactForm ref={form} onSubmit={handleSubmit}>
           <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" rows="4" name="message" />
+            <ContactInput placeholder="Your Email" name="from_email" />
+            {errors.email && <span style={{ color: 'red', fontSize: '0.8rem' }}>{errors.email}</span>}
+            <ContactInput placeholder="Your Name" name="from_name" />
+
+
+            <ContactInput placeholder="Subject" name="subject" />
+
+            <ContactInputMessage placeholder="Message" rows="4" name="message" />
+            {errors.message && <span style={{ color: 'red', fontSize: '0.8rem' }}>{errors.message}</span>}
+
           <ContactButton type="submit" value="Send" />
         </ContactForm>
       </Wrapper>
     </Container>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

@@ -6,7 +6,7 @@ export const Bio = {
     "Programmer",
   ],
   description:
-    "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
+    "I have a proven track record of delivering high-quality solutions, developing new features, optimizing performance, and enhancing product features. With an M.Tech in Software Engineering from VIT, I am passionate about learning new things and applying that knowledge to drive success in my job roles and create innovative solutions. I am actively seeking backend and Java full-stack development roles to leverage my skills and grow professionally.",
   github: "https://github.com/Naveen-131",
   resume:
     "https://naveen-portfolio.s3.ap-south-1.amazonaws.com/docs/NaveenKumar+SDE.pdf",
@@ -163,7 +163,7 @@ export const skills = [
       {
         name: "Git",
         image:
-          "https://camo.githubusercontent.com/fbfcb9e3dc648adc93bef37c718db16c52f617ad055a26de6dc3c21865c3321d/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6769742d73636d2f6769742d73636d2d69636f6e2e737667",
+          "https://naveen-portfolio.s3.ap-south-1.amazonaws.com/Logo/git.png",
       },
       {
         name: "GitHub",
@@ -183,7 +183,7 @@ export const skills = [
       {
         name: "Postman",
         image:
-          "https://camo.githubusercontent.com/93b32389bf746009ca2370de7fe06c3b5146f4c99d99df65994f9ced0ba41685/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f676574706f73746d616e2f676574706f73746d616e2d69636f6e2e737667",
+          "https://naveen-portfolio.s3.ap-south-1.amazonaws.com/Logo/Postman.png",
       },
       {
         name: "Swagger",
@@ -212,11 +212,32 @@ export const skills = [
 export const experiences = [
   {
     id: 0,
+    img: "https://naveen-portfolio.s3.ap-south-1.amazonaws.com/Logo/athenahealth.png", 
+    role: "Member of Technical Staff",
+    company: "Athenahealth",
+    date: "Feb 2024 – present",
+    desc: "Developed and implemented a code review lint tool used by multiple teams, reducing code rework by 40% and significantly enhancing productivity. Contributed to the rules migration, migrating Perl code to Java and Spring Boot for claim rules, achieving a 10% performance improvement through code optimization and cleanup. Worked on an AI code generator tool, resulting in a 40% increase in productivity and significantly reducing development time",
+    skills: [
+      "Java",
+      "Spring Boot",
+      "Spring MVC",
+      "Perl",
+      "Python",
+      "Code Optimization",
+      "Microservices",
+      "Unit Testing",
+      "Oracle SQL",
+      "Performance Tuning",
+    ],
+    doc: "",
+  },
+  {
+    id: 0,
     img: "https://www.logo.wine/a/logo/Capgemini/Capgemini-Logo.wine.svg",
     role: "Senior Software Engineer ",
     company: "Capgemini.",
-    date: "Jan 2023 - Present",
-    desc: "I work on the Finacle Banking Product as a backend developer, contributing by creating new functionalities and features. I am proficient in delivering code bug fixes for existing system issues based on business client requirements. Additionally, I have successfully resolved over 6500 account data issues in the production environment",
+    date: "Jan 2023 - Feb 2024",
+    desc: "Worked as a backend developer, contributing by creating new functionalities and features. I am proficient in delivering code bug fixes for existing system issues based on business client requirements. Additionally, I have successfully resolved over 6500 account data issues in the production environment",
     skills: [
       "Java",
       "Oracle SQL",
